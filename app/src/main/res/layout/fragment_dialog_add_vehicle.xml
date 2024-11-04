@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/popup_background"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Vehicle"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_gravity="center"
+        android:paddingBottom="16dp" />
+
+    <EditText
+        android:id="@+id/carPlateNumberInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Car Plate Number"
+        android:background="@drawable/rounded_edittext"
+        android:padding="12dp"
+        android:layout_marginBottom="16dp"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/carModelInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Car Model"
+        android:background="@drawable/rounded_edittext"
+        android:padding="12dp"
+        android:layout_marginBottom="24dp"
+        android:textColor="@android:color/black" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/confirmButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Confirm"
+            android:layout_marginEnd="16dp"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@android:color/holo_red_dark" />
+
+        <Button
+            android:id="@+id/cancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:backgroundTint="#636363"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</LinearLayout>

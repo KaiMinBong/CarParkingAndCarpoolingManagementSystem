@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <!-- Search bar to filter the vehicles -->
+    <EditText
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search vehicles..."
+        android:padding="12dp"
+        android:inputType="text" />
+
+    <!-- List view to display the blocked vehicles -->
+    <ListView
+        android:id="@+id/listViewBlockedVehicles"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:choiceMode="multipleChoice" />
+</LinearLayout>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_background"
+    android:paddingVertical="16dp">
+
+    <TextView
+        android:id="@+id/deleteTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove Vehicle"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/deleteMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove Vehicle ABC 1234?"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/deleteTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Confirm Button -->
+    <Button
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:textColor="@android:color/white"
+        android:text="Confirm"
+        app:layout_constraintTop_toBottomOf="@id/deleteMessage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cancelButton"
+        android:layout_marginTop="16dp" />
+
+    <!-- Cancel Button -->
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#636363"
+        android:textColor="@android:color/white"
+        android:text="Cancel"
+        app:layout_constraintTop_toTopOf="@id/confirmButton"
+        app:layout_constraintStart_toEndOf="@id/confirmButton"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

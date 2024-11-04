@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ParkingManagementActivity">
+
+    <!-- Top Section for Parking Management Title -->
+    <FrameLayout
+        android:id="@+id/topHalfContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/backgroundImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img1" />
+
+        <View
+            android:id="@+id/redOverlay"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/bottom_cut_shape" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:paddingTop="40dp"
+            android:paddingBottom="24dp"
+            android:text="Parking\nManagement"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+    </FrameLayout>
+
+    <!-- Parking Details Section -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topHalfContainer">
+
+        <LinearLayout
+            android:id="@+id/parkingInfoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <!-- Car Icon -->
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_car"
+                app:tint="@android:color/black" />
+
+            <!-- Car Information Layout -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <!-- Car Plate Number -->
+                <TextView
+                    android:id="@+id/parkedCarPlate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Car Number"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <!-- Location and Type Layout -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/parkedLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Location"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/parkedType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Type"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <!-- Start and End Time Layout -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/parkedStartTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:text="00:00"
+                        android:textColor="@android:color/black"
+                        android:textSize="26sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="-"
+                        android:textColor="@android:color/black"
+                        android:textSize="30sp" />
+
+                    <TextView
+                        android:id="@+id/parkedEndTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="00:00"
+                        android:textColor="@color/black"
+                        android:textSize="26sp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:id="@+id/linearLayout6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500dp"
+        android:layout_marginBottom="642dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topHalfContainer"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/updateButton"
+            android:layout_width="256dp"
+            android:layout_height="62dp"
+            android:backgroundTint="@color/red"
+            android:text="Update Time"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            tools:layout_editor_absoluteX="77dp"
+            tools:layout_editor_absoluteY="642dp" />
+
+        <Button
+            android:id="@+id/exitButton"
+            android:layout_width="256dp"
+            android:layout_height="62dp"
+            android:text="Exit Parking"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:backgroundTint="#636363"
+            tools:layout_editor_absoluteX="77dp"
+            tools:layout_editor_absoluteY="719dp" />
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

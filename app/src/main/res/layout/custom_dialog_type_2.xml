@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Horizontal LinearLayout for ImageView and vehicleText -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/ic_car"
+            android:layout_marginStart="9dp"/>
+
+        <TextView
+            android:id="@+id/vehicleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BLOCKING XYZ 5678"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp" /> <!-- Adds space between icon and text -->
+
+    </LinearLayout>
+
+    <!-- Contact Information -->
+    <TextView
+        android:id="@+id/contactText"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0123456789"
+        android:textSize="18sp"
+        android:layout_marginTop="8dp" />
+
+    <!-- Notify Button -->
+    <Button
+        android:id="@+id/notifyButton"
+        android:layout_width="250dp"
+        android:backgroundTint="@color/red"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Notify"
+        android:layout_marginTop="16dp" />
+</LinearLayout>

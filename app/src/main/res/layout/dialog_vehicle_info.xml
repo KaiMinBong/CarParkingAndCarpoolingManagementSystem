@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/popup_background"
+    android:gravity="center">
+
+    <!-- TextView to display the vehicle's plate number -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User Details"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_red_dark"
+        android:gravity="center" />
+
+    <!-- TextView to display the user's phone number -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_car"
+            android:layout_marginEnd="16dp"
+            app:tint="@android:color/black" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/textViewCarPlate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Car Number Plate"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/textViewPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:textSize="14sp"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+    <!-- Close button -->
+</LinearLayout>
+    <Button
+        android:id="@+id/buttonCloseInfo"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:text="Close"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:padding="0dp" />
+</LinearLayout>

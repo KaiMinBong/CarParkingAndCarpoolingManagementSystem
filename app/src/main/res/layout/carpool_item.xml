@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/studentId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Date"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Time"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/pickup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Pick Up"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/dropoff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Drop Off"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <!-- Interested Button -->
+        <Button
+            android:id="@+id/interestedButton"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/red"
+            android:text="Interested"
+            android:textColor="@android:color/white" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@android:color/darker_gray" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NotificationActivity">
+
+    <!-- Top Section for Notification Title -->
+    <FrameLayout
+        android:id="@+id/topHalfContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.19"> <!-- Height set to 19% of screen -->
+
+        <ImageView
+            android:id="@+id/backgroundImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img1" />
+
+        <View
+            android:id="@+id/redOverlay"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/bottom_cut_shape" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="40dp"
+            android:paddingBottom="24dp"
+            android:text="Notifications"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+    </FrameLayout>
+
+    <!-- RecyclerView for Notifications -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintTop_toBottomOf="@id/topHalfContainer"
+        app:layout_constraintBottom_toTopOf="@id/clearButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scrollbars="vertical"/>
+
+    <!-- Clear Button to Delete All Notifications -->
+    <Button
+        android:id="@+id/clearButton"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:backgroundTint="#636363"
+        android:textColor="@android:color/white" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

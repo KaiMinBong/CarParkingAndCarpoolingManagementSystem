@@ -1,0 +1,6 @@
+<resources>
+    <string-array name="post_type_array">
+        <item>Request</item>
+        <item>Offer</item>
+    </string-array>
+</resources>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProfileActivity">
+
+    <!-- Top Section for Profile Title -->
+    <FrameLayout
+        android:id="@+id/topHalfContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.19">
+
+        <ImageView
+            android:id="@+id/backgroundImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img1" />
+
+        <View
+            android:id="@+id/redOverlay"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/bottom_cut_shape" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="40dp"
+            android:paddingBottom="24dp"
+            android:text="Profile"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+    </FrameLayout>
+
+    <!-- Profile Details Container in ScrollView -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/topHalfContainer"
+        app:layout_constraintBottom_toTopOf="@id/buttonEditProfile"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Student ID -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/textViewStudentId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Student ID : "
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="16dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/studentId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:enabled="false"
+                    android:inputType="text"
+                    android:text="1234567"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Email (Non-editable) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/textViewEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email : "
+                    android:layout_marginLeft="16dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:text="1234567@gmail.com"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <!-- Phone Number -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:layout_marginTop="8dp">
+
+
+                <TextView
+                    android:id="@+id/textViewPhoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Phone Number : "
+                    android:layout_marginLeft="16dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/phoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:enabled="false"
+                    android:inputType="phone"
+                    android:text="0123456789"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Edit Button placed outside the ScrollView -->
+    <Button
+        android:id="@+id/buttonEditProfile"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/red"
+        android:text="Edit Profile"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonLogout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- Logout Button -->
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="#636363"
+        android:text="Log out"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

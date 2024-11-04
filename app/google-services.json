@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "701237191308",
+    "project_id": "carparkingpooling",
+    "storage_bucket": "carparkingpooling.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701237191308:android:d227ad7ed3d0c5769111a9",
+        "android_client_info": {
+          "package_name": "com.example.carparkingpool"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHT3GCBciamo1h61cKCNVJJQJw43m-1vY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

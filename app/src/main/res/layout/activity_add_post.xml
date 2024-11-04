@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddPostActivity">
+
+    <!-- Top Section with Title and Background Image -->
+    <FrameLayout
+        android:id="@+id/topHalfContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.19">
+
+        <ImageView
+            android:id="@+id/backgroundImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img1" />
+
+        <View
+            android:id="@+id/redOverlay"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/bottom_cut_shape" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Post"
+            android:textColor="@android:color/white"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingTop="40dp" />
+    </FrameLayout>
+
+    <!-- Form Section -->
+    <LinearLayout
+        android:id="@+id/inputForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/topHalfContainer">
+
+        <!-- Post Type Spinner -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Post Type"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="4dp" />
+
+        <Spinner
+            android:id="@+id/spinnerPostType"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textAlignment="center"
+            android:background="@drawable/spinner_background"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Date -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/editTextDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Pick Up Time -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick Up Time"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/editTextPickupTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Pick Up Location -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick Up Location"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/editTextPickupLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Drop Off Location -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Drop Off Location"
+            android:textSize="16sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/editTextDropoffLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:background="@drawable/edittext_background"
+            android:padding="12dp"
+            android:layout_marginBottom="16dp" />
+
+    </LinearLayout>
+
+    <!-- Post and Cancel Buttons -->
+    <LinearLayout
+        android:layout_width="410dp"
+        android:layout_height="225dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inputForm">
+
+        <Button
+            android:id="@+id/buttonPost"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/red"
+            android:text="Post"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/buttonCancel"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:text="Cancel"
+            android:backgroundTint="#636363"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

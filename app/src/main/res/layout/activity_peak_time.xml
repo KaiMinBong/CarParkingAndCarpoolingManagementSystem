@@ -1,0 +1,98 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PeakTimeActivity">
+
+    <!-- Top Section for Parking Management Title -->
+    <FrameLayout
+        android:id="@+id/topHalfContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/backgroundImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img1" />
+
+        <View
+            android:id="@+id/redOverlay"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/bottom_cut_shape" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:paddingTop="40dp"
+            android:paddingBottom="24dp"
+            android:text="Peak Time"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="30sp" />
+    </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/yAxisLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:gravity="left"
+        android:text="Vehicle Count"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.35" />
+
+    <Button
+        android:id="@+id/selectDateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:text="Select Date"
+        android:backgroundTint="#CC0000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Label for X-Axis -->
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/barChart"
+        android:layout_width="380dp"
+        android:layout_height="410dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/selectDateButton"
+        app:layout_constraintVertical_bias="0.216" />
+
+    <TextView
+        android:id="@+id/xAxisLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time (Hour)"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/barChart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
