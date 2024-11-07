@@ -80,7 +80,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     }
 
     // Show custom Dialog Type 1
-// Show custom Dialog Type 1
     private void showCustomDialogType1(BlockedMessage message) {
         // Create a custom dialog
         Dialog dialog = new Dialog(context);
@@ -113,7 +112,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             saveBlockedMessageToFirebase(newMessage, message.getUserId());
 
             // Show a confirmation message and dismiss the dialog
-            Toast.makeText(context, "Notify button clicked and message saved.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Message sent successfully.", Toast.LENGTH_SHORT).show();
             dialog.dismiss();
         });
 
@@ -123,7 +122,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
 
     // Show custom Dialog Type 2
-// Show custom Dialog Type 2
     private void showCustomDialogType2(BlockedMessage message) {
         // Create a custom dialog
         Dialog dialog = new Dialog(context);
@@ -149,14 +147,14 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                     message.getCreatedDateTime(),           // Created date-time
                     "On my way to move my vehicle.", // Message for Notify button
                     3,                                      // Use the same message type
-                    message.getUserId()                          // Set the current logged-in user as userId
+                    loggedInUserId                          // Set the current logged-in user as userId
             );
 
             // Save the BlockedMessage under message.getUserId()
             saveBlockedMessageToFirebase(newMessage, message.getUserId());
 
             // Show a confirmation message and dismiss the dialog
-            Toast.makeText(context, "Notify button clicked and message saved.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Message sent successfully.", Toast.LENGTH_SHORT).show();
             dialog.dismiss();
         });
 
