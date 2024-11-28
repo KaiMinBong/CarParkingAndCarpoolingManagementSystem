@@ -14,8 +14,11 @@ import androidx.fragment.app.DialogFragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class AddVehicleDialog extends DialogFragment {
 
@@ -47,14 +50,8 @@ public class AddVehicleDialog extends DialogFragment {
             String carModel = carModelInput.getText().toString().trim();
 
             if (!plateNumber.isEmpty() && !carModel.isEmpty()) {
-                // Get the current logged-in user
-                FirebaseUser currentUser = mAuth.getCurrentUser();
-                if (currentUser != null) {
-                    // Save vehicle data under the user's UID
-                    saveVehicleToDatabase(currentUser.getUid(), plateNumber, carModel);
-                } else {
-                    Toast.makeText(getActivity(), "User not logged in", Toast.LENGTH_SHORT).show();
-                }
+                // Check for duplicate plate numbers across all users
+                checkDuplicateAndSave(plateNumber, carModel);
             } else {
                 Toast.makeText(getActivity(), "Please enter all fields", Toast.LENGTH_SHORT).show();
             }
@@ -77,24 +74,67 @@ public class AddVehicleDialog extends DialogFragment {
         }
     }
 
-    // Method to save vehicle information to Firebase Realtime Database
-    private void saveVehicleToDatabase(String userId, String plateNumber, String carModel) {
-        // Create a unique key for each vehicle
-        String vehicleId = databaseReference.child(userId).push().getKey();
+    // Method to check for duplicate plate numbers and save if none are found
+    private void checkDuplicateAndSave(String plateNumber, String carModel) {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                boolean duplicateFound = false;
 
-        // Create a Vehicle object
-        Vehicle vehicle = new Vehicle(plateNumber, carModel);
+                // Iterate through all users' vehicles
+                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                    for (DataSnapshot vehicleSnapshot : userSnapshot.getChildren()) {
+                        String existingPlateNumber = vehicleSnapshot.child("plateNumber").getValue(String.class);
 
-        // Save the vehicle to Firebase under the user's UID and the generated unique vehicle ID
-        if (vehicleId != null) {
-            databaseReference.child(userId).child(vehicleId).setValue(vehicle).addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    Toast.makeText(getActivity(), "Vehicle Added Successfully", Toast.LENGTH_SHORT).show();
-                    dismiss(); // Close the dialog
-                } else {
-                    Toast.makeText(getActivity(), "Failed to add vehicle", Toast.LENGTH_SHORT).show();
+                        // Check if the plate number matches
+                        if (existingPlateNumber != null && existingPlateNumber.equalsIgnoreCase(plateNumber)) {
+                            duplicateFound = true;
+                            break;
+                        }
+                    }
+                    if (duplicateFound) break;
                 }
-            });
+
+                if (duplicateFound) {
+                    Toast.makeText(getActivity(), "Vehicle with this plate number already exists", Toast.LENGTH_SHORT).show();
+                } else {
+                    // No duplicate found, save the vehicle
+                    saveVehicleToDatabase(plateNumber, carModel);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(getActivity(), "Error checking for duplicates: " + databaseError.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+    }
+
+
+    // Method to save vehicle information to Firebase Realtime Database
+    private void saveVehicleToDatabase(String plateNumber, String carModel) {
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            // Create a unique key for each vehicle
+            String vehicleId = databaseReference.child(currentUser.getUid()).push().getKey();
+
+            // Create a Vehicle object
+            Vehicle vehicle = new Vehicle(plateNumber, carModel);
+
+            // Save the vehicle to Firebase under the user's UID and the generated unique vehicle ID
+            if (vehicleId != null) {
+                databaseReference.child(currentUser.getUid()).child(vehicleId).setValue(vehicle).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(getActivity(), "Vehicle Added Successfully", Toast.LENGTH_SHORT).show();
+                        dismiss(); // Close the dialog
+                    } else {
+                        Toast.makeText(getActivity(), "Failed to add vehicle", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        } else {
+            Toast.makeText(getActivity(), "User not logged in", Toast.LENGTH_SHORT).show();
         }
     }
 }
+

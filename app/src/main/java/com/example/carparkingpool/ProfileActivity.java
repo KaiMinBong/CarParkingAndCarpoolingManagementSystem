@@ -105,20 +105,65 @@ public class ProfileActivity extends AppCompatActivity {
         String newStudentId = studentIdEditText.getText().toString().trim();
         String newPhoneNumber = phoneNumberEditText.getText().toString().trim();
 
-        if (newStudentId.isEmpty() || newPhoneNumber.isEmpty()) {
-            Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
+        // Validate newStudentId: Must start with "P" followed by 8 digits
+        if (!newStudentId.matches("P\\d{8}")) {
+            Toast.makeText(this, "Student ID must start with 'P' followed by 8 digits", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Save updated data to Firebase
-        userRef.child("studentId").setValue(newStudentId);
-        userRef.child("phone").setValue(newPhoneNumber);
+        // Validate newPhoneNumber: Must contain exactly 10 digits
+        if (!newPhoneNumber.matches("\\d{10}")) {
+            Toast.makeText(this, "Phone number must be exactly 10 digits", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        // Disable editing
-        studentIdEditText.setEnabled(false);
-        phoneNumberEditText.setEnabled(false);
-        editButton.setText("Edit");
+        // Check for duplicate studentId and phone
+        userRef.getParent().addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                boolean duplicateStudentId = false;
+                boolean duplicatePhone = false;
 
-        Toast.makeText(this, "Profile updated successfully!", Toast.LENGTH_SHORT).show();
+                for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
+                    String existingStudentId = userSnapshot.child("studentId").getValue(String.class);
+                    String existingPhone = userSnapshot.child("phone").getValue(String.class);
+                    String currentUserId = currentUser.getUid();
+
+                    if (userSnapshot.getKey() != null && !userSnapshot.getKey().equals(currentUserId)) {
+                        if (newStudentId.equals(existingStudentId)) {
+                            duplicateStudentId = true;
+                        }
+                        if (newPhoneNumber.equals(existingPhone)) {
+                            duplicatePhone = true;
+                        }
+                    }
+
+                    if (duplicateStudentId || duplicatePhone) break;
+                }
+
+                if (duplicateStudentId) {
+                    Toast.makeText(ProfileActivity.this, "Student ID already exists!", Toast.LENGTH_SHORT).show();
+                } else if (duplicatePhone) {
+                    Toast.makeText(ProfileActivity.this, "Phone number already exists!", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Save updated data to Firebase
+                    userRef.child("studentId").setValue(newStudentId);
+                    userRef.child("phone").setValue(newPhoneNumber);
+
+                    // Disable editing
+                    studentIdEditText.setEnabled(false);
+                    phoneNumberEditText.setEnabled(false);
+                    editButton.setText("Edit");
+
+                    Toast.makeText(ProfileActivity.this, "Profile updated successfully!", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(ProfileActivity.this, "Error checking for duplicates: " + databaseError.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
+
 }

@@ -149,9 +149,7 @@ public class HomeActivty extends AppCompatActivity {
 
     // Show the search vehicle dialog
     private void showSearchVehicleDialog() {
-        LayoutInflater inflater = LayoutInflater.from(this);
-        View searchVehicleView = inflater.inflate(R.layout.dialog_search_vehicle, null);
-
+        View searchVehicleView = LayoutInflater.from(this).inflate(R.layout.dialog_search_vehicle, null);
         EditText editTextVehiclePlate = searchVehicleView.findViewById(R.id.editTextVehiclePlate);
         Button buttonSearchVehicle = searchVehicleView.findViewById(R.id.buttonSearchVehicle);
         Button buttonCancel = searchVehicleView.findViewById(R.id.cancelButton);
@@ -164,18 +162,16 @@ public class HomeActivty extends AppCompatActivity {
         buttonSearchVehicle.setOnClickListener(v -> {
             String plateNumber = editTextVehiclePlate.getText().toString().trim();
             if (plateNumber.isEmpty()) {
-                Toast.makeText(HomeActivty.this, "Please enter a plate number", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please enter a plate number", Toast.LENGTH_SHORT).show();
             } else {
-                searchVehicleByPlate(plateNumber);
-                searchDialog.dismiss();
+                searchVehicleByPlate(plateNumber, searchDialog);
             }
         });
 
         buttonCancel.setOnClickListener(v -> searchDialog.dismiss());
     }
-
-    // Modify vehiclesRef to refer to parkingRef for correct vehicle searching
-    private void searchVehicleByPlate(String plateNumber) {
+    
+    private void searchVehicleByPlate(String plateNumber, AlertDialog searchDialog) {
         vehiclesRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -197,18 +193,20 @@ public class HomeActivty extends AppCompatActivity {
                 }
 
                 if (vehicleFound && userId != null) {
+                    searchDialog.dismiss(); // Close the dialog only if the vehicle is found
                     getUserPhoneNumber(userId, plateNumber);
                 } else {
-                    Toast.makeText(HomeActivty.this, "Vehicle not found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomeActivty.this, "Vehicle not found. Please try again.", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Toast.makeText(HomeActivty.this, "Failed to search for vehicle", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeActivty.this, "Failed to search for vehicle: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 
     private void getUserPhoneNumber(String userId, String vehiclePlate) {
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("users").child(userId);

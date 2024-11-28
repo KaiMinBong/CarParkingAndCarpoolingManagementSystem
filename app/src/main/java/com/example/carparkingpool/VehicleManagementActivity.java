@@ -97,7 +97,7 @@ public class VehicleManagementActivity extends AppCompatActivity {
         // Set the delete button functionality with confirmation
         deleteButton.setOnClickListener(v -> deleteVehicle(vehicleId, plateNumber));
 
-        vehicleListContainer.addView(vehicleCardView);
+        vehicleListContainer.addView(vehicleCardView, 0);
     }
 
     private void UpdateVehicleCard(String plateNumber, String carModel, String vehicleId) {

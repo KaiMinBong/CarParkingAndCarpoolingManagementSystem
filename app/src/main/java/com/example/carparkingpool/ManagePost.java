@@ -144,7 +144,7 @@ public class ManagePost extends AppCompatActivity {
                     });
 
                     // Add the post item to the LinearLayout
-                    managePostItemList.addView(postItemView);
+                    managePostItemList.addView(postItemView, 0);
                 }
             }
 

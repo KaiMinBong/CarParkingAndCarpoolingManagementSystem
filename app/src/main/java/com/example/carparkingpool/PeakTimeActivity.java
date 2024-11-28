@@ -142,10 +142,12 @@ public class PeakTimeActivity extends AppCompatActivity {
         // Customize the colors based on the counts
         int[] colors = new int[hourlyCounts.length];
         for (int i = 0; i < hourlyCounts.length; i++) {
-            if (hourlyCounts[i] > 10) {  // Apply red color for higher values
-                colors[i] = ColorTemplate.rgb("#FF0000");
+            if (hourlyCounts[i] > 4) {
+                colors[i] = ColorTemplate.rgb("#FF0000"); // Red for high count
+            } else if (hourlyCounts[i] > 2) {
+                colors[i] = ColorTemplate.rgb("#FFA500"); // Orange for medium count
             } else {
-                colors[i] = ColorTemplate.rgb("#BEBEBE"); // Gray color for lower values
+                colors[i] = ColorTemplate.rgb("#ADD8E6"); // Light Blue for low count
             }
         }
         dataSet.setColors(colors);
